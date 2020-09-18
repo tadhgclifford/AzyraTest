@@ -21,6 +21,6 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: 'CreateStorageAcc/AzureDeploy.json'
     csmParametersFile: 'CreateStorageAcc/azuredeploy.parameters.dev.json'
-    overrideParameters: '-projectName AzyraTest -linkedTemplateUri https://raw.githubusercontent.com/tadhgclifford/AzyraTest/master/CreateStorageAcc/AzureDeploy.json?token=AMFYIP2F7IONHTQRPFIBJ7K7MSOZG'
+    overrideParameters:
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
