@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzyraTest-conn'
+    subscriptionId: 'bb292f6b-d8af-4307-8897-1615f8243c22'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'AzyraTest-RG'
+    location: 'North Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: 'CreateStorageAcc/AzureDeploy.json'
+    csmParametersFile: 'CreateStorageAcc/azuredeploy.parameters.dev.json'
+    overrideParameters: '-projectName AzyraTest -linkedTemplateUri https://raw.githubusercontent.com/tadhgclifford/AzyraTest/master/CreateStorageAcc/AzureDeploy.json?token=AMFYIP2F7IONHTQRPFIBJ7K7MSOZG'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'
